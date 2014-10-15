@@ -1,4 +1,18 @@
 /*
+ * Filename: isEven.s
+ * Author: Eric Tran
+ * Userid: cs30xjy
+ * Description: Program to test if value is even or not.
+ * Date: October 14, 2014
+ * Sources of Help: pa0, lecture notes, SPARC wikibook
+ *                  
+ */ 
+
+.global isEven
+
+.section ".text"
+
+/*
  * Function name: isEven()
  * Function protype: int isEven(long num);
  * Description: Checks if the inputted number is even
@@ -12,27 +26,43 @@
  *
  * Registers Used: 
  * 	$i0 - arg 1 -- number to be checked
+ * 	%o0 - argument 1 is passed to subroutine .rem
+ * 	%o1 - value of 2 to be compared to 
  *
  */
 
-.global isEven
-
-.section ".text"
+DIVISOR = 2
 
 
 
 isEven:
-	save	%sp, -96, %sp
+	save	%sp, -96, %sp	! magic for now, saves the state
 
-	mov	%i0, %o0
+	inc 	%i0		! increment the return value by 1
 
-	mov	2,   %o1
+	mov	%i0, %o0	! passes the argument to function 
 
-	call	.rem
-	nop
+	call	.rem		! modulus subroutine
 
-	mov	%o0, %i0
+	mov	DIVISOR, %o1	! move the divisor to register to 
+				! be compared
+
+	mov	%o0, %i0	! move the result to be returned
 
 	ret
+
 	restore
+
+
+      
+
+
+
+
+
+
+
+
+
+
 
