@@ -100,6 +100,15 @@ runtestisEven: testisEven
 	@echo "Running testisEven"
 	@./testisEven
 
+testdisplayX: test.h pa1.h displayX.s testdisplayX.c printChar.s numOfDigits.s
+	@echo "Compiling testdisplayX.c"
+	gcc -g -o testdisplayX testdisplayX.c numOfDigits.s displayX.s
+	@echo "Done."
+
+runtestdisplayX: testdisplayX
+	@echo "Running testdisplayX"
+	@./testdisplayX
+
 testnumOfDigits: test.h pa1.h numOfDigits.s testnumOfDigits.c checkRange.s
 	@echo "Compiling testnumOfDigits.c"
 	gcc -g -o testnumOfDigits testnumOfDigits.c numOfDigits.s checkRange.s
@@ -117,6 +126,15 @@ teststrToLong: test.h pa1.h strToLong.c teststrToLong.c
 runteststrToLong: teststrToLong
 	@echo "Running teststrToLong"
 	@./teststrToLong
+
+testprintChar: test.h pa1.h printChar.s testprintChar.c
+	@echo "Compiling testprintChar.c"
+	gcc -g -o testprintChar testprintChar.c printChar.s
+	@echo "Done."
+
+runtestprintChar: testprintChar
+	@echo "Running testprintChar"
+	@./testprintChar
 
 new:
 	make clean

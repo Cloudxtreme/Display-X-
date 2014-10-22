@@ -47,4 +47,8 @@
 	
 #define STR_STRTOLONG_NOTINT "\n\t\"%s\" is not an integer\n"
 
+//#define X_SIZE_MIN = 4
+
+//#define X_SIZE_MAX = 5000
+
 #endif /* STRINGS_H */

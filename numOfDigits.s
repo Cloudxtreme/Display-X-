@@ -10,13 +10,15 @@
 
 	.global numOfDigits
 
+	.section ".data"
+
 	.section ".text"
 
 	MIN_BASE = 2
 
 	MAX_BASE = 36
 
-	COUNTER = 0
+	
 
 
 
@@ -26,16 +28,18 @@
  * Description: Count nunber of base digits in argument
  * if the num is the value 0, return value of 1
  * Parameters: 
- * 	arg 1: long num -- number to be checked
+ * 	arg1: num to be checked
+ * 	arg2: base to be used to check
  *
  * Side Effects: None
  * error conditions: none
  * return value: non-zero value if even, 0 if not even
  *
  * registers used: 
- * 	$i0 - arg 1 -- number to be checked
- * 	%o0 - argument 1 is passed to subroutine checkrang
- * 	%o1 - value of 2 to be compared to 
+ * 	%o1: MIN_BASE
+ * 	%O2: MAX_BASE
+ * 	%l1: -1
+ *
  *
  */
 
@@ -68,7 +72,7 @@ numOfDigits:
 initialCheck:
 	
 	mov	%i0, %o0
-	clr	%l1		! counter
+	clr	%l1		! counter = 0
 
 loop: 
 	cmp     %o0, 0          ! check loop as is not zero
@@ -86,9 +90,6 @@ loop:
         cmp     %o0, 0          ! to execute loop again
         bne     loop            ! iterate
         nop
-        
-
-
 	
 		
 end:

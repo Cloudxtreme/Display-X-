@@ -27,7 +27,9 @@
 				! visible so we can call this function
 	.section ".data"
 
-fmt:				! Formatted String for printf()
+	
+
+format:				! Formatted String for printf()
 	.asciz "%c"
 
 	.section ".text"
@@ -36,15 +38,15 @@ printChar:
 	
 	save	%sp, -96, %sp
 
-	set	fmt, %o0	! Format the argument contained in
+	set	format, %o0	! Format the argument contained in
 				! register %o0
 
-	mov	%i0, %o1	! Copy of formal parameter to print
+	mov	%i0, %o1	! copy value to be printed
 
-	call	printf		! Make function call
-	nop			! Delay slot for call instruction
+	call	printf, 2	! Calls the printf function for printing
+	nop			
 
-	ret			! Return from subroutine
-	restore			! Restore caller's window
+	ret			
+	restore			
 
 

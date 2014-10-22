@@ -7,15 +7,11 @@
  *Sources of Help: lecture notes, StackOverflow
  */
 
-    .global displayX        ! Declares the symbol to be globally visible so
-       
+    .global displayX        	! Declares the symbol to be globally visible so
        				! we can call this funtion from toher modules.
     
     .section ".text"        
-    				! The text segments begins here
-
-    
-    
+    			    
     BASE = 10 
     
     ROW = 0
@@ -28,17 +24,24 @@
 	
 /* Function name: displayX()
  * Function prototype: void displayX( long size, long xChar, long fillerChar, 
- *                      long borderChar )
- * Description: display pattern to screen
- * Parameters: arg1,2,3,4: size, xChar, fillerChar, borderChar draw based on
- * Side Effects: pattern displayed
- * Error Conditions: parameters not even/out ofrange, tested in main()
+ *                   long borderChar )
+ * Description: Displays an X-like shape to the screen with corresponding
+ * 		bordering as chosen by the parameter arguments
+ *
+ * Parameters: long size, long xChar, long fillerChar, long borderChar 
+ * Side Effects: A pattern of an X shape with bordering is shown. 
+ * Error Conditions: Parameters are not within the acceptable boundaries
+ * 			and are checked within the main method. 
  * Return Value: none
  * Registers Used:
- *  %i0 - arg1 - size
- *  %i1,2,3 - arg2,3,4 - input char
- *  %o0 - param1 to fucntions    -- for operation and comparison.
- *  %l1,2,3,4 - params to cmp -- for operation and comparison
+ * %i0 = size
+ * %i1, i2, i3 = xChar, fillerChar, borderChar
+ * %l0 = row	%l1 = col
+ * %l2 = borderCnt  %l3= numOFDigits(size, BASE)
+ * %l4 = numOfDigits(size, BASE)*2 +2
+ * %l5 = (size -col -1)
+ * %l6 = numOfDigits*2
+ * %o0 = output register
  */
 
 displayX:
